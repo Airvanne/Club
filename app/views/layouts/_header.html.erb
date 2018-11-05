@@ -1,29 +1,15 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Accueil", root_path %></li>
-        <li><%= link_to "Aide", help_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "Users", '#' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Se déconnecter", logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Se connecter", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+<header>
+<div class="col-sm-3 sidenav">
+  <h4>Super Club</h4>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><%= link_to "Accueil", root_path %></li>
+    <% if logged_in? %>
+      <li><%= link_to "Page du club", users_path %></li>
+      <li><%= link_to "Se déconnecter", logout_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Se connecter", login_path %></li>
+      <li><%= link_to "S'inscrire", '/users/new'%></li>
+    <% end %>
+  </ul><br>
+</div>
 </header>

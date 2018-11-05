@@ -9,21 +9,21 @@ class UserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
 
-    test "first_name should be present" do
-      @user.first_name="          "
-      assert_not @user.valid?
-    end
+  test "first_name should be present" do
+    @user.first_name="          "
+    assert_not @user.valid?
+  end
 
-    test "email should not be too long" do
-      @user.email = "a" * 244 + "@example.com"
-      assert_not @user.valid?
-    end
+  test "email should not be too long" do
+    @user.email = "a" * 244 + "@example.com"
+    assert_not @user.valid?
+  end
 
-    test "email addresses should be unique" do
-      duplicate_user = @user.dup
-      @user.save
-      assert_not duplicate_user.valid?
-    end
+  test "email addresses should be unique" do
+    duplicate_user = @user.dup
+    @user.save
+    assert_not duplicate_user.valid?
+  end
 
 
 end

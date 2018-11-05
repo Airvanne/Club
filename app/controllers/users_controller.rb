@@ -13,14 +13,22 @@ class UsersController < ApplicationController
       else
         render 'new'
       end
+      puts params
     end
 
     def show
-      @user = User.find(params[:id])
+      if logged_in?
+        @user = User.find(params[:id])
+      else
+        redirect_to login_path
+      end
     end
 
     def index
-
+      if logged_in?
+      else
+      redirect_to login_path
+      end
     end
 
     def edit
